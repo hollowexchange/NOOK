@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nook — Room comfort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="sky room" id="sky" aria-hidden="true">
+    <div class="ceiling">
+      <span class="ceiling-light"></span>
+    </div>
+    <div class="ac-unit">
+      <div class="ac-brand">NOOK AIR</div>
+      <div class="ac-display"><span id="acTemp">22°</span></div>
+      <span class="ac-indicator"></span>
+      <div class="ac-outlet">
+        <i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+    <canvas id="wind"></canvas>
+    <div class="haze" id="haze"></div>
+    <div class="side-window">
+      <span class="side-window-bar"></span>
+      <span class="side-window-view"></span>
+    </div>
+    <div class="floor"></div>
+  </div>
+
+  <header class="hero">
+    <p class="eyebrow">Indoor climate</p>
+    <p class="brand">Nook</p>
+    <h1>Settle into your space.</h1>
+    <p class="lede">Fine-tune the airflow and temperature for a room that feels just right.</p>
+  </header>
+
+  <section class="controls" aria-label="Comfort controls">
+    <div class="control">
+      <div class="control-head">
+        <label for="windStrength">Airflow</label>
+        <span class="value" id="windValue">2</span>
+      </div>
+      <input
+        type="range"
+        id="windStrength"
+        min="0"
+        max="5"
+        value="2"
+        step="1"
+        aria-valuemin="0"
+        aria-valuemax="5"
+        aria-valuenow="2"
+      />
+      <div class="ticks">
+        <span>Off</span>
+        <span>Soft</span>
+        <span>Strong</span>
+      </div>
+    </div>
+
+    <div class="control">
+      <div class="control-head">
+        <label for="temperature">Temperature</label>
+        <span class="value" id="tempValue">22 °C</span>
+      </div>
+      <input
+        type="range"
+        id="temperature"
+        min="16"
+        max="30"
+        value="22"
+        step="1"
+        aria-valuemin="16"
+        aria-valuemax="30"
+        aria-valuenow="22"
+      />
+      <div class="ticks">
+        <span>Cool</span>
+        <span>Easy</span>
+        <span>Warm</span>
+      </div>
+    </div>
+  </section>
+
+  <p class="readout" id="readout">A soft current in easy cool air.</p>
+  <p class="link-status" id="linkStatus" aria-live="polite">
+    <span class="dot" aria-hidden="true"></span>
+    <span id="linkStatusText">Linking…</span>
+  </p>
+
+  <script src="https://unpkg.com/mqtt@5.10.1/dist/mqtt.min.js"></script>
+  <script src="mqtt-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
